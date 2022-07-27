@@ -1,0 +1,6 @@
+@import '~antd/dist/antd.css';
+
+.pac-container:after {
+  background-image: none !important;
+  height: 0px;
+}
