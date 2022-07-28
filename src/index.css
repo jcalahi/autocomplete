@@ -4,3 +4,7 @@
   background-image: none !important;
   height: 0px;
 }
+
+.ant-list-item-meta {
+  align-items: center;
+}
