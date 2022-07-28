@@ -1,20 +1,18 @@
 import React from 'react';
-import { Col, Row } from 'antd';
 import SearchInput from './components/searchInput/SearchInput';
 import SearchList from './components/searchList/SearchList';
 import SearchResult from './components/searchResult/SearchResult';
+import './styles.css';
 
 const SearchMap = () => {
   return (
-    <Row>
-      <Col span={8}>
+    <div className="container">
+      <div className="search-box">
         <SearchInput />
         <SearchList />
-      </Col>
-      <Col span={16}>
-        <SearchResult />
-      </Col>
-    </Row>
+      </div>
+      <SearchResult />
+    </div>
   );
 };
 

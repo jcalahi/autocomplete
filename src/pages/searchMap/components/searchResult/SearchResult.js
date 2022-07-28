@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Marker from './components/marker';
 
 const SearchResult = ({ coordinates }) => {
-
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
@@ -12,11 +11,7 @@ const SearchResult = ({ coordinates }) => {
         defaultZoom={16}
         center={coordinates}
       >
-        <Marker
-          lat={coordinates.lat}
-          lng={coordinates.lng}
-          text="here"
-        />
+        <Marker lat={coordinates.lat} lng={coordinates.lng} />
       </GoogleMapReact>
     </div>
   );

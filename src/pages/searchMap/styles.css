@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+}
+
+.search-box {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 25%;
+  z-index: 1;
+}
