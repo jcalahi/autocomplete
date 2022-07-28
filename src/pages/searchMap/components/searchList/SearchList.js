@@ -1,20 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Avatar, List } from 'antd';
+import { Avatar, List, Button } from 'antd';
+import {
+  searchMapOnDelete,
+  searchMapOnView
+} from '../../../../store/actions/searchMapActions';
 
-const SearchList = ({ searchResults }) => {
+const SearchList = ({ searchResults, searchMapOnDelete, searchMapOnView }) => {
   const renderItem = (item) => {
     return (
       <List.Item
         actions={[
-          <a key="list-item-view">View</a>,
-          <a key="list-item-delete">Delete</a>
-        ]}>
-          <List.Item.Meta
-            avatar={<Avatar src={item.icon} />}
-            title={item.name}
-            description={item.formatted_address}
-          />
+          <Button
+            key="list-item-view"
+            type="link"
+            onClick={() => searchMapOnView(item)}
+          >
+            View
+          </Button>,
+          <Button
+            key="list-item-delete"
+            type="link"
+            onClick={() => searchMapOnDelete(item.place_id)}
+          >
+            Delete
+          </Button>
+        ]}
+      >
+        <List.Item.Meta
+          avatar={<Avatar src={item.icon} />}
+          title={item.name}
+          description={item.formatted_address}
+        />
       </List.Item>
     );
   };
@@ -28,4 +45,6 @@ const mapStateToProps = ({ searchMap: { searchResults } }) => {
   return { searchResults };
 };
 
-export default connect(mapStateToProps)(SearchList);
+const mapDispatchToProps = { searchMapOnDelete, searchMapOnView };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchList);

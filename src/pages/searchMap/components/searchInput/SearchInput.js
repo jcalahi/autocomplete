@@ -1,17 +1,16 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { setPlace } from '../../../../store/actions/searchMapActions';
+import { searchMapOnPlaceChanged } from '../../../../store/actions/searchMapActions';
 
-const SearchInput = ({ setPlace }) => {
+const SearchInput = ({ searchMapOnPlaceChanged }) => {
   const inputRef = useRef();
   const googleMapsRef = useRef();
 
   const handlePlaceChanged = useCallback(() => {
-    inputRef.current.value = '';
-
     const place = googleMapsRef.current.getPlace();
-    setPlace(place);
-  }, [setPlace]);
+    inputRef.current.value = '';
+    searchMapOnPlaceChanged(place);
+  }, [searchMapOnPlaceChanged]);
 
   useEffect(() => {
     googleMapsRef.current = new window.google.maps.places.Autocomplete(inputRef.current);
@@ -31,6 +30,6 @@ const SearchInput = ({ setPlace }) => {
   );
 };
 
-const mapDispatchToProps = { setPlace };
+const mapDispatchToProps = { searchMapOnPlaceChanged };
 
 export default connect(null, mapDispatchToProps)(SearchInput);
