@@ -5,7 +5,7 @@ import Marker from './components/marker';
 
 const SearchResult = ({ coordinates }) => {
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: '100vh' }}>
       <GoogleMapReact
         bootstrapURLKeys={process.env.REACT_APP_GOOGLE_API_KEY}
         defaultZoom={16}
